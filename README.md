@@ -5,4 +5,4 @@ Android customized ViewGroup, which has a special way to communicate with it's c
 ## application scenarios
 
 
-this component help you to show red point easily
+this component helps you to show red point easily
