@@ -10,9 +10,9 @@
         android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:text="Message"
         android:textSize="20sp"
+        android:background="#00ff00"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,8 +47,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:reference_ids="tv,btn,iv"
-        app:reference_offsetX="-10,0,0"
-        app:reference_offsetY="10,0,0"
+        app:reference_offsetX="0,0,0"
+        app:reference_offsetY="0,0,0"
         app:reference_radius="5,13,8" />
 
     <Button

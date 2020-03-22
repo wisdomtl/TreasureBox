@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import test.taylor.com.taylorcode.ui.custom_view.treasure_box.Treasure
 import test.taylor.com.taylorcode.ui.custom_view.treasure_box.TreasureBox
@@ -18,8 +19,10 @@ class RedPointTreasure @JvmOverloads constructor(context: Context, attrs: Attrib
     companion object {
         @JvmStatic
         val TYPE_RADIUS = "radius"
+
         @JvmStatic
         val TYPE_OFFSET_X = "offset_x"
+
         @JvmStatic
         val TYPE_OFFSET_Y = "offset_y"
     }
@@ -59,8 +62,8 @@ class RedPointTreasure @JvmOverloads constructor(context: Context, attrs: Attrib
     override fun drawTreasure(treasureBox: TreasureBox, canvas: Canvas?) {
         ids.forEachIndexed { index, id ->
             treasureBox.findViewById<View>(id)?.let { v ->
-                val cx = v.right + offsetXs.getOrElse(index) { 0F }.dp2px()
-                val cy = v.top + offsetYs.getOrElse(index) { 0F }.dp2px()
+                val cx = v.x + v.width + offsetXs.getOrElse(index) { 0F }.dp2px()
+                val cy = v.y + offsetYs.getOrElse(index) { 0F }.dp2px()
                 val radius = radiuses.getOrElse(index) { DEFAULT_RADIUS }.dp2px()
                 canvas?.drawCircle(cx, cy, radius, bgPaint)
             }
