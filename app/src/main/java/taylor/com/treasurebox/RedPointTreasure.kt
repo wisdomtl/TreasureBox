@@ -62,8 +62,8 @@ class RedPointTreasure @JvmOverloads constructor(context: Context, attrs: Attrib
     override fun drawTreasure(treasureBox: TreasureBox, canvas: Canvas?) {
         ids.forEachIndexed { index, id ->
             treasureBox.findViewById<View>(id)?.let { v ->
-                val cx = v.x + v.width + offsetXs.getOrElse(index) { 0F }.dp2px()
-                val cy = v.y + offsetYs.getOrElse(index) { 0F }.dp2px()
+                val cx = rects[index].right + offsetXs.getOrElse(index) { 0F }.dp2px()
+                val cy = rects[index].top + offsetYs.getOrElse(index) { 0F }.dp2px()
                 val radius = radiuses.getOrElse(index) { DEFAULT_RADIUS }.dp2px()
                 canvas?.drawCircle(cx, cy, radius, bgPaint)
             }

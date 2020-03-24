@@ -6,62 +6,102 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Message"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Mail box"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iv"
+            app:layout_constraintStart_toEndOf="@id/tv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:src="@drawable/ic_voice_call"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <taylor.com.treasurebox.RedPointTreasure
+            android:id="@+id/redPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:reference_ids="tv,btn,iv,tvRecommend"
+            app:reference_offsetX="0,0,0,10"
+            app:reference_offsetY="0,0,0,0"
+            app:reference_radius="5,13,8,7" />
+
+        <Button
+            android:id="@+id/btnChange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="change text red point size" />
+
+        <Button
+            android:id="@+id/btnChangePosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="change button red point position"
+            app:layout_constraintTop_toBottomOf="@id/btnChange" />
+
+<!--        <taylor.com.treasurebox.RedPointTreasure-->
+<!--            android:id="@+id/redPoint"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:reference_ids="tvRecommend"-->
+<!--            app:reference_offsetX="10"-->
+<!--            app:reference_offsetY="0"-->
+<!--            app:reference_radius="7" />-->
+
+
     <TextView
-        android:id="@+id/tv"
+        android:id="@+id/tvRecommend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Message"
-        android:textSize="20sp"
-        android:background="#00ff00"
+        android:gravity="bottom"
+        android:includeFontPadding="false"
+        android:text="推荐"
+        android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn"
+        app:layout_constraintEnd_toStartOf="@id/tvConcern"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintTop_toBottomOf="@id/tv" />
 
-    <Button
-        android:id="@+id/btn"
+    <TextView
+        android:id="@+id/tvConcern"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Mail box"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tv"
-        app:layout_constraintStart_toEndOf="@id/iv"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:src="@drawable/ic_voice_call"
-        android:textSize="20sp"
+        android:layout_marginLeft="16dp"
+        android:gravity="bottom"
+        android:includeFontPadding="false"
+        android:scaleX="0.65"
+        android:scaleY="0.65"
+        android:text="关注"
+        android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <taylor.com.treasurebox.RedPointTreasure
-        android:id="@+id/redPoint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:reference_ids="tv,btn,iv"
-        app:reference_offsetX="0,0,0"
-        app:reference_offsetY="0,0,0"
-        app:reference_radius="5,13,8" />
-
-    <Button
-        android:id="@+id/btnChange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="change text red point size" />
-
-    <Button
-        android:id="@+id/btnChangePosition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btnChange"
-        android:text="change button red point position" />
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/tvRecommend"
+        app:layout_constraintTop_toBottomOf="@id/tv"/>
 
 </test.taylor.com.taylorcode.ui.custom_view.treasure_box.TreasureBox>

@@ -2,6 +2,7 @@ package test.taylor.com.taylorcode.ui.custom_view.treasure_box
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.View
 import taylor.com.treasurebox.R
@@ -14,7 +15,10 @@ abstract class Treasure @JvmOverloads constructor(context: Context, attrs: Attri
     View(context, attrs, defStyleAttr) {
 
     internal var ids = mutableListOf<Int>()
-    var layoutParams = mutableListOf<LayoutParam>()
+    var rects = mutableListOf<Rect>()
+    var lastRects = mutableListOf<Rect>()
+//    var rect: Rect = Rect()
+//    var lastRect: Rect = Rect()
 
     init {
         readAttrs(attrs)
@@ -27,13 +31,10 @@ abstract class Treasure @JvmOverloads constructor(context: Context, attrs: Attri
     fun onPreDraw(treasureBox: TreasureBox) {
         ids.forEachIndexed { index, id ->
             treasureBox.findViewById<View>(id)?.let { v ->
-                LayoutParam(v.width, v.height, v.x, v.y).let { lp ->
-                    if (layoutParams[index] != lp) {
-                        if (layoutParams[index].isValid()) {
-                            treasureBox.postInvalidate()
-                        }
-                        layoutParams[index] = lp
-                    }
+                v.getHitRect(rects[index])
+                if (rects[index] != lastRects[index]) {
+                    treasureBox.postInvalidate()
+                    lastRects[index].set(rects[index])
                 }
             }
         }
@@ -56,18 +57,9 @@ abstract class Treasure @JvmOverloads constructor(context: Context, attrs: Attri
     private fun divideIds(idString: String?) {
         idString?.split(",")?.forEach { id ->
             ids.add(resources.getIdentifier(id.trim(), "id", context.packageName))
-            layoutParams.add(LayoutParam())
+            rects.add(Rect())
+            lastRects.add(Rect())
         }
         ids.toCollection(mutableListOf()).print("ids") { it.toString() }
-    }
-
-    data class LayoutParam(var width: Int = 0, var height: Int = 0, var x: Float = 0f, var y: Float = 0f) {
-        private var id: Int? = null
-        override fun equals(other: Any?): Boolean {
-            if (other == null || other !is LayoutParam) return false
-            return width == other.width && height == other.height && x == other.x && y == other.y
-        }
-
-        fun isValid() = width != 0 && height != 0
     }
 }
